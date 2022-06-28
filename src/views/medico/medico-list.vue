@@ -8,6 +8,7 @@
         </div>
         <div class="search-bar">
             <input type="search" name="search-bar" placeholder="Nome do médico">
+            <button>Buscar</button>
             <button>Cadastrar</button>
         </div>
         <table class="table">
@@ -25,7 +26,7 @@
             <tbody>
                 <tr>
                     <th>1</th>
-                    <td><p>João Pedro Barbosa</p></td>
+                    <td><p>Gustavo Koslovski</p></td>
                     <td><p>Neurologista</p></td>
                     <td><p>CRM/PR 123456</p></td>
                     <td>12.00</td>
@@ -52,7 +53,7 @@
                 </tr>
                 <tr>
                     <th>4</th>
-                    <td><p>Layal Youseff Al Wanni</p></td>
+                    <td><p>Layal Youssef Al Wanni</p></td>
                     <td><p>Pediatra</p></td>
                     <td><p>CRM/PR 123456</p></td>
                     <td>13.00</td>
@@ -83,7 +84,7 @@
 
 .search-bar input{
     height: 35px;
-    width: 60em;
+    width: 55.5em;
     border-radius: 0.3em;
     border: 1px solid #f10d0d;
 }
@@ -143,7 +144,5 @@ td p{
 tr:hover{
     background-color: #f8f8f8;;
 }
-
-
 
 </style>

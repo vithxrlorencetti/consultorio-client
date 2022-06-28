@@ -8,6 +8,7 @@
         </div>
         <div class="search-bar">
             <input type="search" name="search-bar" placeholder="Nome do convênio">
+            <button>Buscar</button>
             <button>Cadastrar</button>
         </div>
         <table class="table">
@@ -52,6 +53,25 @@
                 </tr>
             </tbody>
         </table>
+
+        <div id="modal-js-example" class="modal">
+            <div class="modal-background"></div>
+
+            <div class="modal-content">
+                <div class="box">
+                    <p>Modal JS example</p>
+                    <!-- Your content -->
+                </div>
+            </div>
+
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+
+        <button class="js-modal-trigger" data-target="modal-js-example">
+            Open JS example modal
+        </button>
+
+
     </div>
 
 </template>
@@ -65,22 +85,23 @@
 
 .search-bar input{
     height: 35px;
-    width: 60em;
+    width: 55.5em;
     border-radius: 0.3em;
-    border: 1px solid #23fc9a;
+    border: 1px solid #f10d0d;
 }
 
 .search-bar input:focus{
-    outline: 1px solid #23fc9a;;
+    outline: 1px solid #f10d0d;
 }
 
 .search-bar button, .detail-button{
     margin-left: 5px;
+    padding-left:5px;
     height: 35px;
     border-radius: 0.3em;
     font-size: 15px;
     color: #ffffff;
-    background-color: #23fc9a;
+    background-color: #f10d0d;
     cursor: pointer;
     border:none;
     
@@ -88,8 +109,8 @@
 
 .search-bar button:hover{
     background-color: #ffffff;
-    border: 1px solid #23fc9a;
-    color: #23fc9a;
+    border: 1px solid #f10d0d;
+    color: #f10d0d;
 }
 
 .detail-button{
@@ -126,6 +147,54 @@ tr:hover{
     background-color: #f8f8f8;;
 }
 
-
-
 </style>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+  // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add('is-active');
+  }
+
+  function closeModal($el) {
+    $el.classList.remove('is-active');
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById(modal);
+
+    $trigger.addEventListener('click', () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+    const $target = $close.closest('.modal');
+
+    $close.addEventListener('click', () => {
+      closeModal($target);
+    });
+  });
+
+  // Add a keyboard event to close all modals
+  document.addEventListener('keydown', (event) => {
+    const e = event || window.event;
+
+    if (e.keyCode === 27) { // Escape key
+      closeAllModals();
+    }
+  });
+});
+
+</script>
+

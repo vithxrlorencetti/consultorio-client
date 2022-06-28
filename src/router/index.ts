@@ -23,6 +23,16 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/medico/medico-list.vue')
   },
   {
+    path: '/paciente',
+    name: 'paciente',
+    component: () => import('../views/paciente/paciente-list.vue')
+  },
+  {
+    path: '/secretaria',
+    name: 'secretaria',
+    component: () => import('../views/secretaria/secretaria-list.vue')
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting

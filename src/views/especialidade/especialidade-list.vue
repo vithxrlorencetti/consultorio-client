@@ -8,6 +8,7 @@
         </div>
         <div class="search-bar">
             <input type="search" name="search-bar" placeholder="Nome da especialidade">
+            <button>Buscar</button>
             <button>Cadastrar</button>
         </div>
         <table class="table">
@@ -59,7 +60,7 @@
 
 .search-bar input{
     height: 35px;
-    width: 60em;
+    width: 55.5em;
     border-radius: 0.3em;
     border: 1px solid #f10d0d;
 }
@@ -95,7 +96,6 @@
     background-color: #ffffff;
     border: 1px solid #f10d0d;
     color: #f10d0d;
-    
 }
 
 ::-webkit-input-placeholder{ 
