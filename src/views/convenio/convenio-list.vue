@@ -150,8 +150,9 @@ tr:hover{
 </style>
 
 <script>
+export default{
 
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded' () => {
   // Functions to open and close a modal
   function openModal($el) {
     $el.classList.add('is-active');
@@ -195,6 +196,6 @@ tr:hover{
     }
   });
 });
-
+}
 </script>
 
