@@ -1,20 +1,15 @@
 <template>
     
-    <div class="convenio-form column is-12">
+    <div class="especialidade-form column is-12">
 
-        <form action="cadastro-convenio">
+        <form action="cadastro-especialidade">
             <div class="title">
-                <h1>Cadastro de Convênio</h1>
+                <h1>Cadastro de Especialidade</h1>
             </div>
             <div class="control column is-5">
-                <label for="nome">Nome do Convênio</label>
-                <input class="input is-primary" type="text" placeholder="Nome do convênio">
+                <label for="nome">Nome da Especialidade</label>
+                <input class="input is-primary" type="text" placeholder="Nome da especialidade">
             </div>
-            <div class="control column is-2">
-                <label for="valor">Valor</label>
-                <input class="input is-primary" type="number" placeholder="Valor (R$)">
-            </div>
-
             <div class="control column is-2">
                 <button class="save-button" >
                     <router-link to="/convenio-list">Salvar</router-link>
@@ -29,7 +24,7 @@
 <style>
 
 .save-button{
-    height: 40px;
+    height: 35px;
     width: 70px;
     border-radius: 0.3em;
     font-size: 15px;
@@ -42,9 +37,8 @@
 
 .save-button:hover{
     background-color: #ffffff;
-    border: 1px solid hsl(171deg, 100%, 41%);
-    color: hsl(171deg, 100%, 41%);
+    border: 1px solid #f10d0d;
+    color: #f10d0d;
     
 }
 </style>
-

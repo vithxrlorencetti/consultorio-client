@@ -9,7 +9,9 @@
         <div class="search-bar">
             <input type="search" name="search-bar" placeholder="Nome da especialidade">
             <button>Buscar</button>
-            <button>Cadastrar</button>
+            <button>
+                <router-link to="/especialidade-form">Cadastrar</router-link>
+            </button>
         </div>
         <table class="table">
             <thead>

@@ -9,7 +9,9 @@
         <div class="search-bar">
             <input type="search" name="search-bar" placeholder="Nome do convênio">
             <button>Buscar</button>
-            <button>Cadastrar</button>
+            <button>
+                <router-link to="/convenio-form">Cadastrar</router-link>
+            </button>
         </div>
         <table class="table">
             <thead>
@@ -23,54 +25,56 @@
             <tbody>
                 <tr>
                     <th>1</th>
-                    <td><p>Unimed</p>
-                    </td><td>R$ 200.00</td>
-                    <td><button class="detail-button">Detalhar</button></td>
+                    <td><p>Unimed</p></td>
+                    <td>R$ 200.00</td>
+                    <td>
+                        <button class="detail-button">
+                            <router-link to="/convenio-form">Detalhar</router-link>
+                        </button>
+                    </td>
                 </tr>
                 <tr>
                     <th>2</th>
                     <td><p>Amil</p></td>
                     <td>R$ 200.00</td>
-                    <td><button class="detail-button">Detalhar</button></td>
+                    <td>
+                        <button class="detail-button">
+                            <router-link to="/convenio-form">Detalhar</router-link>
+                        </button>
+                    </td>
                 </tr>
                 <tr>
                     <th>3</th>
                     <td><p>SulAmérica</p></td>
                     <td>R$ 200.00</td>
-                    <td><button class="detail-button">Detalhar</button></td>
+                    <td>
+                        <button class="detail-button">
+                            <router-link to="/convenio-form">Detalhar</router-link>
+                        </button>
+                    </td>
                 </tr>
                 <tr>
                     <th>4</th>
                     <td><p>Notredame</p></td>
                     <td>R$ 200.00</td>
-                    <td><button class="detail-button">Detalhar</button></td>
+                    <td>
+                        <button class="detail-button">
+                            <router-link to="/convenio-form">Detalhar</router-link>
+                        </button>
+                    </td>
                 </tr>
                 <tr>
                     <th>5</th>
                     <td><p>Assim Saúde</p></td>
                     <td>R$ 200.00</td>
-                    <td><button class="detail-button">Detalhar</button></td>
+                    <td>
+                        <button class="detail-button">
+                            <router-link to="/convenio-form">Detalhar</router-link>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
-
-        <div id="modal-js-example" class="modal">
-            <div class="modal-background"></div>
-
-            <div class="modal-content">
-                <div class="box">
-                    <p>Modal JS example</p>
-                    <!-- Your content -->
-                </div>
-            </div>
-
-            <button class="modal-close is-large" aria-label="close"></button>
-        </div>
-
-        <button class="js-modal-trigger" data-target="modal-js-example">
-            Open JS example modal
-        </button>
-
 
     </div>
 
@@ -150,52 +154,6 @@ tr:hover{
 </style>
 
 <script>
-export default{
 
-    document.addEventListener('DOMContentLoaded' () => {
-  // Functions to open and close a modal
-  function openModal($el) {
-    $el.classList.add('is-active');
-  }
-
-  function closeModal($el) {
-    $el.classList.remove('is-active');
-  }
-
-  function closeAllModals() {
-    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
-      closeModal($modal);
-    });
-  }
-
-  // Add a click event on buttons to open a specific modal
-  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
-    const modal = $trigger.dataset.target;
-    const $target = document.getElementById(modal);
-
-    $trigger.addEventListener('click', () => {
-      openModal($target);
-    });
-  });
-
-  // Add a click event on various child elements to close the parent modal
-  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
-    const $target = $close.closest('.modal');
-
-    $close.addEventListener('click', () => {
-      closeModal($target);
-    });
-  });
-
-  // Add a keyboard event to close all modals
-  document.addEventListener('keydown', (event) => {
-    const e = event || window.event;
-
-    if (e.keyCode === 27) { // Escape key
-      closeAllModals();
-    }
-  });
-});
-}
 </script>
 

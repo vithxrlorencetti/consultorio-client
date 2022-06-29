@@ -13,9 +13,19 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/convenio/convenio-list.vue')
   },
   {
+    path: '/convenio-form',
+    name: 'convenio-form',
+    component: () => import('../views/convenio/convenio-form.vue')
+  },
+  {
     path: '/especialidade',
     name: 'especialidade',
     component: () => import('../views/especialidade/especialidade-list.vue')
+  },
+  {
+    path: '/especialidade-form',
+    name: 'especialidade-form',
+    component: () => import('../views/especialidade/especialidade-form.vue')
   },
   {
     path: '/medico',
