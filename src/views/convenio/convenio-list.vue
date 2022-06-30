@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="search-bar">
-            <input type="search" name="search-bar" placeholder="Nome do convênio">
+            <input type="search" placeholder="Nome do convênio">
             <button>Buscar</button>
             <button>
                 <router-link to="/convenio-form">Cadastrar</router-link>
@@ -99,8 +99,9 @@
 }
 
 .search-bar button, .detail-button{
+    padding-bottom:3px;
     margin-left: 5px;
-    padding-left:5px;
+    padding-left: 5px;
     height: 35px;
     border-radius: 0.3em;
     font-size: 15px;
@@ -108,7 +109,7 @@
     background-color: #f10d0d;
     cursor: pointer;
     border:none;
-    
+    border: 1px solid #f10d0d;
 }
 
 .search-bar button:hover{
@@ -148,7 +149,7 @@ td p{
 }
 
 tr:hover{
-    background-color: #f8f8f8;;
+    background-color: #f8f8f8;
 }
 
 </style>

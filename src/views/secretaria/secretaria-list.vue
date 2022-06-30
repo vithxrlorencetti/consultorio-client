@@ -66,7 +66,9 @@
 }
 
 .search-bar button, .detail-button{
+    padding-bottom:3px;
     margin-left: 5px;
+    padding-left: 5px;
     height: 35px;
     border-radius: 0.3em;
     font-size: 15px;
@@ -74,7 +76,7 @@
     background-color: #f10d0d;
     cursor: pointer;
     border:none;
-    
+    border: 1px solid #f10d0d;
 }
 
 .search-bar button:hover{

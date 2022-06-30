@@ -22,10 +22,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>1</th>
-                    <td><p>Cardiologista</p></td>
-                    <td><button class="detail-button">Detalhar</button></td>
+                <tr v-for="item in especialidadeList" :key="item.id">
+                    <th>{{ item.id }}</th>
+                    <th> 
+                        <span v-if="item.ativo" class="tag is-success"> Ativo </span>
+                        <span v-if="!item.ativo" class="tag is-danger"> Inativo </span>
+                    </th>
+                    <th>{{ item.nome }}</th>
+                    <th>
+                        <button @click="onClickPaginaDetalhar(item.id)" class="button is-small is-warning"> Detalhar </button>
+                    </th>
                 </tr>
                 <tr>
                     <th>2</th>
@@ -72,7 +78,9 @@
 }
 
 .search-bar button, .detail-button{
+    padding-bottom:3px;
     margin-left: 5px;
+    padding-left: 5px;
     height: 35px;
     border-radius: 0.3em;
     font-size: 15px;
@@ -80,7 +88,7 @@
     background-color: #f10d0d;
     cursor: pointer;
     border:none;
-    
+    border: 1px solid #f10d0d;
 }
 
 .search-bar button:hover{
@@ -119,9 +127,43 @@ td p{
 }
 
 tr:hover{
-    background-color: #f8f8f8;;
+    background-color: #f8f8f8;
 }
 
-
-
 </style>
+
+<script lang="ts">
+  import { Vue } from 'vue-class-component';
+  
+  import { PageRequest } from '@/model/page/page-request'
+  import { PageResponse } from '@/model/page/page-response'
+  
+  import { Especialidade } from '@/model/especialidade.model'
+  import { EspecialidadeClient } from '@/client/especialidade.client'
+  
+  export default class EspecialidadeList extends Vue {
+    private pageRequest: PageRequest = new PageRequest()
+    private pageResponse: PageResponse<Especialidade> = new PageResponse()
+    especialidadeList: Especialidade[] = []
+    private especialidadeClient!: EspecialidadeClient
+    public mounted(): void {
+      this.especialidadeClient = new EspecialidadeClient()
+      this.listarEspecialidade()
+    }
+    private listarEspecialidade(): void {
+      this.especialidadeClient.findByFiltrosPaginado(this.pageRequest)
+        .then(
+          success => {
+            this.pageResponse = success
+            console.log('Hello World')
+            console.log(success)
+            this.especialidadeList = this.pageResponse.content
+          },
+          error => console.log(error)
+        )
+    }
+    onClickPaginaDetalhar(idEspecialidade: number){
+      this.$router.push({ name: 'especialidade-detalhar', params: { id: idEspecialidade, model: 'detalhar' } })
+    }
+  }
+</script>

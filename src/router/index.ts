@@ -18,6 +18,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/convenio/convenio-form.vue')
   },
   {
+    path: '/convenio-list',
+    name: 'convenio-list',
+    component: () => import('../views/convenio/convenio-list.vue')
+  },
+  {
     path: '/especialidade',
     name: 'especialidade',
     component: () => import('../views/especialidade/especialidade-list.vue')
