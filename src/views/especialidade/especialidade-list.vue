@@ -10,13 +10,14 @@
             <input type="search" name="search-bar" placeholder="Nome da especialidade">
             <button>Buscar</button>
             <button>
-                <router-link to="/especialidade-form">Cadastrar</router-link>
+                <router-link to="/especialidade/formulario">Cadastrar</router-link>
             </button>
         </div>
         <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Ativo</th>
                     <th>Nome</th>
                     <th>Opções</th>
                 </tr>
@@ -30,34 +31,54 @@
                     </th>
                     <th>{{ item.nome }}</th>
                     <th>
-                        <button @click="onClickPaginaDetalhar(item.id)" class="button is-small is-warning"> Detalhar </button>
+                        <button @click="onClickPaginaDetalhar(item.id)" class="detail-button"> Detalhar </button>
                     </th>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <td><p>Ginecologista</p></td>
-                    <td><button class="detail-button">Detalhar</button></td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td><p>Pediatra</p></td>
-                    <td><button class="detail-button">Detalhar</button></td>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <td><p>Neurologista</p></td>
-                    <td><button class="detail-button">Detalhar</button></td>
-                </tr>
-                <tr>
-                    <th>5</th>
-                    <td><p>Urologista</p></td>
-                    <td><button class="detail-button">Detalhar</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
 </template>
+
+<script lang="ts">
+  import { Vue } from 'vue-class-component';
+  
+  import { PageRequest } from '@/model/page/page-request'
+  import { PageResponse } from '@/model/page/page-response'
+  import { Especialidade } from '@/model/especialidade.model'
+  import { EspecialidadeClient } from '@/client/especialidade.client'
+  
+  export default class EspecialidadeList extends Vue {
+
+    private pageRequest: PageRequest = new PageRequest()
+    private pageResponse: PageResponse<Especialidade> = new PageResponse()
+    especialidadeList: Especialidade[] = []
+    private especialidadeClient!: EspecialidadeClient
+
+    public mounted(): void {
+      this.especialidadeClient = new EspecialidadeClient()
+      this.listarEspecialidade()
+    }
+
+    private listarEspecialidade(): void {
+      this.especialidadeClient.findByFiltrosPaginado(this.pageRequest)
+        .then(
+          success => {
+            this.pageResponse = success
+            console.log('Hello World')
+            console.log(success)
+            this.especialidadeList = this.pageResponse.content
+          },
+          error => console.log(error)
+        )
+    }
+
+    onClickPaginaDetalhar(idEspecialidade: number){
+      this.$router.push({ name: 'especialidade-detalhar', params: { id: idEspecialidade, model: 'detalhar' } })
+    }
+    
+  }
+</script>
 
 <style>
 
@@ -131,39 +152,3 @@ tr:hover{
 }
 
 </style>
-
-<script lang="ts">
-  import { Vue } from 'vue-class-component';
-  
-  import { PageRequest } from '@/model/page/page-request'
-  import { PageResponse } from '@/model/page/page-response'
-  
-  import { Especialidade } from '@/model/especialidade.model'
-  import { EspecialidadeClient } from '@/client/especialidade.client'
-  
-  export default class EspecialidadeList extends Vue {
-    private pageRequest: PageRequest = new PageRequest()
-    private pageResponse: PageResponse<Especialidade> = new PageResponse()
-    especialidadeList: Especialidade[] = []
-    private especialidadeClient!: EspecialidadeClient
-    public mounted(): void {
-      this.especialidadeClient = new EspecialidadeClient()
-      this.listarEspecialidade()
-    }
-    private listarEspecialidade(): void {
-      this.especialidadeClient.findByFiltrosPaginado(this.pageRequest)
-        .then(
-          success => {
-            this.pageResponse = success
-            console.log('Hello World')
-            console.log(success)
-            this.especialidadeList = this.pageResponse.content
-          },
-          error => console.log(error)
-        )
-    }
-    onClickPaginaDetalhar(idEspecialidade: number){
-      this.$router.push({ name: 'especialidade-detalhar', params: { id: idEspecialidade, model: 'detalhar' } })
-    }
-  }
-</script>

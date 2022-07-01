@@ -23,15 +23,22 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/convenio/convenio-list.vue')
   },
   {
-    path: '/especialidade',
-    name: 'especialidade',
+    path: '/especialidade/listar',
+    name: 'especialidade-listar',
     component: () => import('../views/especialidade/especialidade-list.vue')
   },
   {
-    path: '/especialidade-form',
-    name: 'especialidade-form',
+    path: '/especialidade/formulario',
+    name: 'especialidade-cadastrar',
     component: () => import('../views/especialidade/especialidade-form.vue')
   },
+  {
+    path: '/especialidade/formulario/:model/:id',
+    name: 'especialidade-detalhar',
+    props: (router) => ({ id: router.params.id, model: router.params.model }),
+    component: () => import('../views/especialidade/especialidade-form.vue')
+  },
+
   {
     path: '/medico',
     name: 'medico',
